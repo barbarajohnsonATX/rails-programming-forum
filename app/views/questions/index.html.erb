@@ -1,17 +1,18 @@
 <h1>Questions#index</h1>
 
-
-
 <% if @questions %>
- <ul>
-     <% @questions.each do |q| %>
-         <li>Category: <%= link_to q.category.name, category_path(q.category) %> - <%= link_to q.title, question_path(q) %> 
-         by <%= q.user.username %>
-         </li>
+    <% @questions.each do |q| %>
+        <%#= link_to q.category.name, category_path(q.category) %>
+        <%= q.category.name %>
+        <ul>
+        <% q.category.questions.each do |q| %>
+            <li><%= link_to q.title, question_path(q) %> by <%= q.user.username %> </li>
+        <% end %>
+        </ul>
+    <% end %>
+<% end %>
+
  
-    <% end %> 
-</ul>
- <% end %>
 
  <%= link_to 'New Question', new_question_path %>
 

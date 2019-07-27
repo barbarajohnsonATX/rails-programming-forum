@@ -1,1 +1,21 @@
 <h1>Questions#index</h1>
+
+
+
+<% if @questions %>
+ <ul>
+     <% @questions.each do |q| %>
+         
+         <li>Category: <%= q.category.name %> - <%= q.title %> <%= link_to q.title, question_path(q) %></li>
+ 
+    <% end %> 
+    </ul>
+ <% end %>
+
+ <%= link_to 'New Question', new_question_path %>
+
+
+
+
+
+

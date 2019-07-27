@@ -1,0 +1,11 @@
+<h1>Categories#show</h1>
+
+<h4>
+<ul>
+<% @category.questions.each do |q| %>
+    
+    <li><%= link_to q.title, category_question_path(@category, q) %></li>
+
+<% end %> 
+</ul>
+</h4>

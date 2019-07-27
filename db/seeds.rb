@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Category.where(name: 'Ruby').first_or_create(name: 'Ruby')
+Category.where(name: 'CSS').first_or_create(name: 'CSS')
+Category.where(name: 'HTML').first_or_create(name: 'HTML')
+Category.where(name: 'Java').first_or_create(name: 'Java')
+Category.where(name: 'Python').first_or_create(name: 'Python')
+Category.where(name: 'Swift').first_or_create(name: 'Swift')
+Category.where(name: 'Objective C').first_or_create(name: 'Objective C')
+

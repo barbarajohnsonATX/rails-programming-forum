@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+ 
 root 'sessions#home'
 
 get '/signup' => 'users#new'
@@ -16,6 +17,8 @@ resources :categories do
     resources :questions
 end
 
-
+resources :questions do 
+    resources :answers
+end 
 
 end

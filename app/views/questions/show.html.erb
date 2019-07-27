@@ -4,7 +4,11 @@
 <h4>Question: <%= @question.title %> by <%= @question.user.username %></h4>
 <h4>Description: <%= @question.description %></h4>
 
- 
+<p><%= render 'answers/comments' %></p>
+
+
+<%= render 'answers/form' %>
+
 <% if @question.user_id == current_user.id %>
     <%= link_to "Edit Question", edit_question_path(@question) %>
 <% end %>

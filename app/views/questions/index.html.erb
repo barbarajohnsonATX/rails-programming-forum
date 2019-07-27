@@ -5,8 +5,9 @@
 <% if @questions %>
  <ul>
      <% @questions.each do |q| %>
-         
-         <li>Category: <%= q.category.name %> - <%= q.title %> <%= link_to q.title, question_path(q) %></li>
+         <li>Category: <%= link_to q.category.name, category_path(q.category) %> - <%= link_to q.title, question_path(q) %> 
+         by <%= q.user.username %>
+         </li>
  
     <% end %> 
 </ul>

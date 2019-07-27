@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in, :check_for_logged_in?
+    helper_method :current_user, :logged_in?, :check_for_logged_in?
 
     private 
     def current_user
@@ -14,5 +14,6 @@ class ApplicationController < ActionController::Base
     def check_for_logged_in
         redirect_to root_path if !logged_in?
     end
+ 
 
 end

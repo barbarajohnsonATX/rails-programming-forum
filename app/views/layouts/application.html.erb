@@ -11,7 +11,23 @@
   </head>
 
   <body>
-    <%= link_to "Log Out", logout_path, method: :delete %>
+    <% if logged_in? %>
+    <nav class="navbar">
+
+      <%= link_to "Log Out", logout_path, method: :delete %>
+      <%= link_to "All Questions", questions_path, class: 'navlink' %>
+      <%= link_to "All Categories", categories_path, class: 'navlink' %>
+
+      </nav>
+
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-info" %>
+      <% end %>
+
+    <% end %>
+
+ 
+
     <%= yield %>
   </body>
 </html>

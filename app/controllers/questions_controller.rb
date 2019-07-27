@@ -29,6 +29,10 @@ class QuestionsController < ApplicationController
     end
 
     def edit
+        if @question.user_id != current_user.id 
+            flash[:notice] = "You are not authorized to edit this question."
+            redirect_to question_path(@question)
+        end 
     end
 
     def update         

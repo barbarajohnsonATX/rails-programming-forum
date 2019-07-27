@@ -1,7 +1,11 @@
 <h1>Question#show</h1>
+ 
 <h4>Category: <%= @question.category.name %></h4>
-<h4>Question: <%= @question.title %></h4>
-<h4><%= @question.description %></h4>
+<h4>Question: <%= @question.title %> by <%= @question.user.username %></h4>
+<h4>Description: <%= @question.description %></h4>
 
-<%= link_to "Edit Question", edit_question_path(@question) %>
+ 
+<% if @question.user_id == current_user.id %>
+    <%= link_to "Edit Question", edit_question_path(@question) %>
+<% end %>
 

@@ -8,11 +8,16 @@
         <p> <%= link_to a.comment, question_answer_path(a.question, a) %> </p>
         <p> By: <%= a.user.username %> <%= time_ago_in_words(a.created_at) %> ago </p>
          <% if a.user_id == current_user.id %>
-            <%= link_to "Edit Answer", edit_question_answer_path(@question, a) %>
-            <%= link_to "Delete Answer", question_answer_path(@question, a), method: :delete, data: { confirm: "Are you sure?" } %>
-       
-            <% end %>
+            <div class="btn btn-info btn-xs">
+                <%= link_to "Edit Answer", edit_question_answer_path(@question, a), class: "btn"  %>
             </div>
+
+            <div class="btn btn-warning btn-xs">
+                <%= link_to "Delete Answer", question_answer_path(@question, a), class: "btn" , method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+
+            <% end %>
+        </div>
     <% end %>
 
   <% else %>

@@ -1,12 +1,26 @@
 <div class="col-md-10 col-md-offset-1">
 
- <%= @question.user.username %> asked <%= time_ago_in_words(@question.created_at) %> ago.
 
 <div class="well">
+    <%= @question.user.username %> asked <%= time_ago_in_words(@question.created_at) %> ago.
+
     <h4><%= @question.category.name %> Question: </h4>
     <p> <%= @question.title %> </p>
     <h4>Description: </h4>
     <p> <%= @question.description %> </p>
+
+
+    <% if @question.user_id == current_user.id %>
+    
+        <div class="btn btn-info btn-xs">
+            <%= link_to "Edit Question", edit_question_path(@question), class:"btn" %>
+        </div>
+
+        <div class="btn btn-warning btn-xs">
+            <%= link_to "Delete Question", question_path(@question), class:"btn", method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+    <% end %>
+
 </div>
  
 <%= render 'answers/comments' %>
@@ -14,10 +28,6 @@
 
 <%= render 'answers/form' %>
 
-<% if @question.user_id == current_user.id %>
-    <%= link_to "Edit Question", edit_question_path(@question) %>
-    <%= link_to "Delete Question", question_path(@question), method: :delete, data: { confirm: "Are you sure?" } %>
- 
-<% end %>
+
 
 </div>

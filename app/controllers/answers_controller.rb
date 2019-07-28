@@ -11,12 +11,12 @@ class AnswersController < ApplicationController
         @answer.user_id = current_user.id 
 
         if @answer.save
-            #redirect_to answers_path(@answer)
-            #byebug
-            redirect_to question_path(@question)
+            flash[:notice] = "Comment saved successfully."
         else 
-            render :new
+            flash[:alert] = "Comment failed to save."
         end 
+ 
+        redirect_to question_path(@question)
 
     end 
       

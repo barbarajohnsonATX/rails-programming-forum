@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+    before_action :check_for_logged_in
     before_action :find_question, only: [:show, :create, :edit, :update, :destroy]
     before_action :find_answer, only: [:show, :edit, :update, :destroy]
 

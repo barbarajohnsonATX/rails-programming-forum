@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
 
     def index
         @questions = Question.order('updated_at DESC')
- 
+        @categories = Category.all 
     end
 
      def new
@@ -44,6 +44,10 @@ class QuestionsController < ApplicationController
         end
     end
 
+    def destroy 
+        @question.destroy
+        redirect_to questions_path
+    end 
 
     private
 

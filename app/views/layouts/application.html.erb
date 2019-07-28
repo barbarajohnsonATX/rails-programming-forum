@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProgrammingForum</title>
+    <title>Programming Forum</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,14 +12,26 @@
 
   <body>
     <% if logged_in? %>
-    <nav class="navbar">
 
-      <%= link_to "Log Out", logout_path, method: :delete %>
-      <%= link_to "All Questions", questions_path, class: 'navlink' %>
-      <%= link_to "All Categories", categories_path, class: 'navlink' %>
-      <p>Welcome, <%= current_user.username %>! </p>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
 
-      </nav>
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Programming Forum</a>
+        </div>
+        
+        <ul class = "nav navbar-nav navbar-right">
+          <li><%= link_to "All Questions", questions_path, class: 'navlink' %> </li>
+          <li><%= link_to "All Categories", categories_path, class: 'navlink' %> </li>
+          <li><%= link_to "Log Out", logout_path, method: :delete, class: 'navlink' %> </li>
+        </ul>
+
+         
+
+      </div>
+      
+ 
+    </nav>
 
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: "alert alert-info" %>

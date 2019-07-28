@@ -1,12 +1,12 @@
-<h1>Questions#index</h1>
+<div class="col-md-10 col-md-offset-1">
+<h1>Questions</h1>
 
 <% if @questions %>
-    <% @questions.each do |q| %>
-        <%= q.category.name %>
+    <% @categories.each do |c| %>
+        <%= c.name %> 
         <ul>
-        <% q.category.questions.each do |q| %>
-            <li><%= link_to q.title, question_path(q) %> by <%= q.user.username %>  </li>
- 
+        <% c.questions.order('updated_at DESC').each do |q| %>
+                <li><%= link_to q.title, question_path(q) %> by <%= q.user.username %>  </li>     
         <% end %>
         </ul>
     <% end %>
@@ -16,7 +16,7 @@
 
  <%= link_to 'Ask a Question', new_question_path %>
 
-
+</div>
 
 
 

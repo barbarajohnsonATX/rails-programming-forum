@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
     #logout 
     def destroy 
         session.clear 
-        flash[:notice] = "Goodbye"
+        flash[:notice] = "Goodbye."
         redirect_to root_path 
     end 
 

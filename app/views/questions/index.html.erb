@@ -2,11 +2,11 @@
 
 <% if @questions %>
     <% @questions.each do |q| %>
-        <%#= link_to q.category.name, category_path(q.category) %>
         <%= q.category.name %>
         <ul>
         <% q.category.questions.each do |q| %>
-            <li><%= link_to q.title, question_path(q) %> by <%= q.user.username %> <%= link_to "Help Answer", question_answers_path(q) %> </li>
+            <li><%= link_to q.title, question_path(q) %> by <%= q.user.username %>  </li>
+ 
         <% end %>
         </ul>
     <% end %>
@@ -14,7 +14,7 @@
 
  
 
- <%= link_to 'New Question', new_question_path %>
+ <%= link_to 'Ask a Question', new_question_path %>
 
 
 

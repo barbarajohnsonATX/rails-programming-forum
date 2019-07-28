@@ -1,0 +1,21 @@
+<p> <%= @answer.question.title %> </p>
+<p> <%= @answer.question.description %> </p>
+
+<p>Last updated by <%= @answer.user.username %> at <%= time_ago_in_words(@answer.updated_at) %> ago </p>
+Answer:
+<p> <%= @answer.comment %> </p>
+
+ 
+
+<% if logged_in? %>
+     <% if @answer.user_id == current_user.id %>
+        <%= link_to "Edit Answer", edit_question_answer_path(@answer.question, @answer) %>
+        <%= link_to "Delete Answer", question_answer_path(@answer.question, @answer), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+<% end %>
+
+
+
+
+
+

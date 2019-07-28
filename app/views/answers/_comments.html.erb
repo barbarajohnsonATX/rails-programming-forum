@@ -1,6 +1,13 @@
-<%= @question.answers.count %> answers
-<ul>
-<% @question.answers.each do |a| %>
-    <li><%= a.comment %> by <%= a.user.username %> </li>
-<% end %>
-</ul>
+ 
+<h4>Answers:</h4>
+ 
+  <% @question.answers.each do |a| %> 
+    <p> <%= link_to a.comment, question_answer_path(a.question, a) %> </p>
+    <p> By: <%= a.user.username %> <%= time_ago_in_words(a.created_at) %> ago </p>
+    <%= link_to "Delete Answer", question_answer_path(@question, a), method: :delete, data: { confirm: "Are you sure?" } %>
+
+  <% end %>
+
+
+ 
+</div>

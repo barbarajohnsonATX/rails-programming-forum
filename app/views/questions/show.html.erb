@@ -1,13 +1,16 @@
-<!--<h1>Question#show</h1> -->
-<h5> <%= @question.user.username %> asked <%= time_ago_in_words(@question.created_at) %> ago </h5>
+<div class="col-md-10 col-md-offset-1">
 
-<h4>Category: <%= @question.category.name %></h4>
+ <%= @question.user.username %> asked <%= time_ago_in_words(@question.created_at) %> ago.
 
-<h4>Question: <%= @question.title %> </h4>
-<h4>Description: <%= @question.description %></h4>
-
+<div class="well">
+    <h4><%= @question.category.name %> Question: </h4>
+    <p> <%= @question.title %> </p>
+    <h4>Description: </h4>
+    <p> <%= @question.description %> </p>
+</div>
+ 
 <%= render 'answers/comments' %>
-
+ 
 
 <%= render 'answers/form' %>
 
@@ -17,3 +20,4 @@
  
 <% end %>
 
+</div>

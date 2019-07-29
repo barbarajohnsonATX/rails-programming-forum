@@ -1,11 +1,13 @@
 class Question < ApplicationRecord
     belongs_to :user 
     belongs_to :category
-    has_many :answers
+    # Add dependent: :destroy so answers related to a specific question get deleted if the question is deleted
+    has_many :answers, dependent: :destroy  
 
     validates :title, presence: true
     validates :description, presence: true
     validates :category_id, presence: true
  
+    scope :created_today, -> { where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day) }
 
 end

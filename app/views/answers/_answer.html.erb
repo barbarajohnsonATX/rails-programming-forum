@@ -1,6 +1,7 @@
 <div class="well">
-  
+
 <%= answer.user.username %> answered <%= time_ago_in_words(@question.created_at) %> ago. <br/>
+<%= link_to "Details", question_answer_path(@question, answer) %> <br/>
 
 <!-- Do not render form_for if answer does not belong to current user, just show answer -->
 <% if answer.user_id == current_user.id %>

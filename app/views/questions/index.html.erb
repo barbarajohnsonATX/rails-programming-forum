@@ -1,18 +1,27 @@
 <div class="col-md-10 col-md-offset-1">
     <h2>Questions</h2>
 
-    <% if Question.created_today.any? %>
-        <ul> 
-        
-        New Today:
-        <% Question.created_today.each do |q| %>
-            <li><%= link_to q.title, question_path(q) %> by <%= q.user.username %> </li>
-        <% end %>
-         
-        </ul>
+    <% if @questions_today.any? %>
+        <h4>New today </h4>
+            <ul>
+                <% @questions_today.each do |q| %>
+                    <li><%= link_to q.title, question_path(q) %> by <%= q.user.username %> </li>
+                <% end %>  
+            </ul>
     <% end %>
 
- 
+
+     <% if !!@questions_unanswered %>
+        <h4>Unanswered questions </h4>
+            <ul>
+                <% @questions_unanswered.each do |q| %>
+                    <li><%= link_to q.title, question_path(q) %> by <%= q.user.username %> </li>
+                <% end %>  
+            </ul>
+    <% end %>
+   
+
+
      <% if @questions %>
         <% @categories.each do |c| %>
             <%= c.name %> 

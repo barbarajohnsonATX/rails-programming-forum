@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_27_050548) do
+ActiveRecord::Schema.define(version: 2019_07_30_012643) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_07_27_050548) do
     t.boolean "answered", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "answers_count"
   end
 
   create_table "users", force: :cascade do |t|

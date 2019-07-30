@@ -4,7 +4,9 @@ class AnswersController < ApplicationController
     before_action :find_answer, only: [:show, :edit, :update, :destroy]
 
     def new
+        #answer belongs to question
         @answer = Answer.new
+        
     end
 
     def create
@@ -49,7 +51,6 @@ class AnswersController < ApplicationController
     end 
 
     def find_answer
-         
         @answer = @question.answers.find(params[:id])
     end 
 

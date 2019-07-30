@@ -1,7 +1,5 @@
 <div class="col-md-10 col-md-offset-1">
  
- 
-
     <div class="well">
         <%= @question.user.username %> asked <%= time_ago_in_words(@question.created_at) %> ago.
 
@@ -24,11 +22,15 @@
 
     </div>
  
+  
+    <% if @question.answers.any? %>
+        <!-- Iterate through answers that belong to @question using answers/_answer.html -->
+        <%= render @question.answers %>
+    <% end %>
 
-    <%= render 'answers/comments' %>
- 
 
-    <%= render 'answers/form' %>
+    <h4>Add your answer:</h4>
+    <%= render 'answers/form', answer: @question.answers.build , submit_text: "Add"%>
 
 
 

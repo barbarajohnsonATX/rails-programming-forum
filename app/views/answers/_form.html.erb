@@ -1,13 +1,12 @@
- <p>Add a comment: </p>
-
- <%= form_for ([@question, @question.answers.build]) do |f| %>
+  <%= form_for ([@question, answer]) do |f| %>
 
     <div class="form-group">
         <%= f.label :comment  %>
         <%= f.text_area :comment, :rows => 5, class: "form-control" %>
     </div>
 
-    <%= f.button :submit, class: 'btn btn-success' %>
+     <%= f.submit submit_text, class: 'btn btn-info' %>
+
+
   <% end %>
- 
  

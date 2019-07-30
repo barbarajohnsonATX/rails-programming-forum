@@ -5,6 +5,8 @@ class QuestionsController < ApplicationController
     def index
         @questions = Question.order('updated_at DESC')
         @categories = Category.all 
+        @questions_today = Question.created_today
+        @questions_unanswered = Question.unanswered
     end
 
      def new
@@ -15,8 +17,9 @@ class QuestionsController < ApplicationController
         @question = current_user.questions.build(question_params)
 
         if @question.save
-           #go to question/:id
+            #go to question/:id
             redirect_to question_path(@question)
+            #render :show
             flash[:notice] = "Question successfully created"
         else
             render :new

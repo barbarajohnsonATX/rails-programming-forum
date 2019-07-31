@@ -26,11 +26,7 @@ class SessionsController < ApplicationController
     end 
 
     def omniauth
-        @user = User.find_or_create_by(email: auth[:info][:email]) do |u| 
-            u.username = auth[:info][:name]
-            #secure, randomly generated password
-            u.password = SecureRandom.hex 
-        end 
+        @user = User.create_by_google_omniauth(auth)
         session[:user_id] = @user.id 
         redirect_to questions_path
     end 

@@ -5,8 +5,8 @@ class QuestionsController < ApplicationController
     def index
         @questions = Question.order('updated_at DESC')
         @categories = Category.all 
-        @questions_today = Question.created_today
-        @questions_unanswered = Question.unanswered
+        @questions_today = @questions.created_today
+        @questions_unanswered = @questions.unanswered
     end
 
      def new

@@ -25,4 +25,18 @@ class SessionsController < ApplicationController
         redirect_to root_path 
     end 
 
+    def omniauth
+        @user = User.find_or_create_by(email: auth[:info][:email]) do |u| 
+            u.username = auth[:info][:name]
+            #secure, randomly generated password
+            u.password = SecureRandom.hex 
+        end 
+        session[:user_id] = @user.id 
+        redirect_to questions_path
+    end 
+
+    def auth 
+        request.env['omniauth.auth']
+    end 
+
 end

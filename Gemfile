@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+#git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+ 
+ 
+
 
 ruby '2.6.1'
 
@@ -31,6 +34,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2', :require => "omniauth-google-oauth2" 
+gem 'dotenv-rails'
 
 
 # Use ActiveStorage variant

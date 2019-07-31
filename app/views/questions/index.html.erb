@@ -11,15 +11,14 @@
     <% end %>
 
 
-     <% if !!@questions_unanswered %>
+    <% if @questions_unanswered.any? %>
         <h4>Unanswered questions </h4>
             <ul>
                 <% @questions_unanswered.each do |q| %>
                     <li><%= link_to q.title, question_path(q) %> by <%= q.user.username %> </li>
                 <% end %>  
             </ul>
-    <% end %>
-   
+    <% end %>  
 
 
      <% if @questions %>

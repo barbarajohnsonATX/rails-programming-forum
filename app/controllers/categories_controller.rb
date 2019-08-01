@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
     before_action :admin_only, except: [:index, :show]
-    before_action :find_category, only: [:show, :edit, :update]
+    before_action :find_category, only: [:show, :edit, :update, :destroy]
 
     def new 
         @category = Category.new 
@@ -33,6 +33,12 @@ class CategoriesController < ApplicationController
         render :edit
       end
     end
+
+    def destroy 
+        @category.destroy
+        redirect_to categories_path
+    end 
+
 
 
     private

@@ -1,8 +1,8 @@
 <div class="col-md-10 col-md-offset-1">
 
-<h3>Questions about <%= @category.name %>
+<h3>Questions about <%= @category.name %> </h3>
 
-<h4>
+
 <ul>
 <% @category.questions.each do |q| %>
     
@@ -10,5 +10,8 @@
 
 <% end %> 
 </ul>
-</h4>
+
+<%= render 'form', submit_text: "Edit Category"%>
+
+
 </div>

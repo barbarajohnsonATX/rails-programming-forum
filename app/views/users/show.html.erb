@@ -1,0 +1,20 @@
+<div class="col-md-10 col-md-offset-1">
+ 
+<h3> <%= current_user.username %>'s Page </h3>
+
+<h4> Questions I asked </h4>
+<ul>
+<% @my_questions.each do |q| %>
+    <li><%= link_to q.title, question_path(q) %> </li>
+
+<% end %>
+</ul>
+
+<h4> Questions that I answered </h4>
+<ul>
+ <% @my_answers.each do |a| %>
+    <li> <%= link_to a.question.title, question_path(a.question) %> </li>
+  <% end %>
+</ul>
+
+ </div>

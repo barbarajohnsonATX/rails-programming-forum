@@ -4,4 +4,9 @@ class Answer < ApplicationRecord
     belongs_to :user
     validates :comment, presence: true
 
+ 
+    def self.answered_by_me(user)
+        where(user_id: user.id)
+    end 
+
 end

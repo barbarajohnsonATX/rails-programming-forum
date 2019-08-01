@@ -13,4 +13,12 @@ class User < ApplicationRecord
         end 
     end 
 
+    def asked_by_me
+       questions 
+    end 
+
+    def answered_by_me 
+        answers
+    end 
+
 end

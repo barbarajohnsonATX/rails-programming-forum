@@ -14,3 +14,4 @@ Category.where(name: 'Python').first_or_create(name: 'Python')
 Category.where(name: 'Swift').first_or_create(name: 'Swift')
 Category.where(name: 'Objective C').first_or_create(name: 'Objective C')
 
+ 

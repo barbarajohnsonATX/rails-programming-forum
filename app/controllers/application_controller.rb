@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :check_for_logged_in?
+    helper_method :current_user, :logged_in?, :check_for_logged_in?, :admin_only
 
     private 
     def current_user
@@ -15,5 +15,12 @@ class ApplicationController < ActionController::Base
         redirect_to root_path if !logged_in?
     end
  
+    def admin_only
+        if !current_user.admin
+          flash[:notice] = "You must be an admin to perform that function!"
+          redirect_to user_path(current_user)
+        end
+      end
+
 
 end

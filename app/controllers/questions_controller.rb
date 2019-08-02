@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
             #go to question/:id
             redirect_to question_path(@question)
             #render :show
-            flash[:notice] = "Question successfully created"
+            flash[:notice] = "Question successfully created."
         else
             render :new
         end

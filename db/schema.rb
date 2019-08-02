@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_01_001644) do
+ActiveRecord::Schema.define(version: 2019_08_02_004941) do
 
   create_table "answers", force: :cascade do |t|
     t.text "comment"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2019_08_01_001644) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
+    t.integer "questions_count"
+    t.integer "answers_count"
   end
 
 end

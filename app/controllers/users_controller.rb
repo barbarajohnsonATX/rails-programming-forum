@@ -21,8 +21,12 @@ class UsersController < ApplicationController
     end 
 
     def show 
+         #user has many questions 
         @my_questions = current_user.asked_by_me
-        @my_answers = Answer.answered_by_me(current_user)
+        #answer belongs to user 
+        @my_answers = Answer.answered_by(current_user)
+        @my_questions_open = @my_questions.unanswered 
+
     end 
 
     private 

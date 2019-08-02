@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-    belongs_to :user 
+    belongs_to :user, :counter_cache => true
     belongs_to :category
     # Add dependent: :destroy so answers related to a specific question get deleted if the question is deleted
     has_many :answers, dependent: :destroy  

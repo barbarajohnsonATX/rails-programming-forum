@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-    before_action :check_for_logged_in, except: [:index]
+    before_action :check_for_logged_in, except: [:index, :show]
     before_action :set_question, only: [:show, :edit, :update, :destroy]
 
     def index

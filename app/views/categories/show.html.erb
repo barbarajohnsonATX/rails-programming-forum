@@ -11,7 +11,7 @@
 <% end %> 
 </ul>
 
-<% if current_user.admin %>
+<% if logged_in? && current_user.admin %>
     <%= render 'form', submit_text: "Edit Category"%>
     <%= link_to "Delete Category", category_path(@category), class: "btn btn-warning" , method: :delete, data: { confirm: "Are you sure?" } %>
 

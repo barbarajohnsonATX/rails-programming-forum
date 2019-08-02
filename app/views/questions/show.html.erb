@@ -8,7 +8,7 @@
         <h4>Description: </h4>
         <p> <%= @question.description %> </p>
 
-
+        <% if logged_in? %>
         <% if @question.user_id == current_user.id %>
         
             <div class="btn btn-info btn-xs">
@@ -19,6 +19,7 @@
                 <%= link_to "Delete Question", question_path(@question), class:"btn", method: :delete, data: { confirm: "Are you sure?" } %>
             </div>
         <% end %>
+        <% end %>
 
     </div>
  
@@ -28,9 +29,11 @@
         <%= render @question.answers %>
     <% end %>
 
+    <% if logged_in? %>
 
     <h4>Add your answer:</h4>
     <%= render 'answers/form', answer: @question.answers.build , submit_text: "Add"%>
+    <% end %>
 
 
 

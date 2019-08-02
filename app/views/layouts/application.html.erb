@@ -19,11 +19,12 @@
           <a class="navbar-brand" href="/">Programming Forum</a>
         </div>
 
-        <% if logged_in? %>
           <ul class = "nav navbar-nav navbar-right">
-            <li><%= link_to "My Stuff", user_path(current_user), class: 'navlink' %> </li>
             <li><%= link_to "All Questions", questions_path, class: 'navlink' %> </li>
             <li><%= link_to "All Categories", categories_path, class: 'navlink' %> </li>
+            <% if logged_in? %>
+            <li><%= link_to "My Stuff", user_path(current_user), class: 'navlink' %> </li>
+            <li><%= link_to "Ask Question", new_question_path, class: 'navlink' %> </li>
             <li><%= link_to "Log Out", logout_path, method: :delete, class: 'navlink' %> </li>
           </ul>
         <% end %>

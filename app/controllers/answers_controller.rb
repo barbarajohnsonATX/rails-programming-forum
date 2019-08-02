@@ -1,12 +1,12 @@
 class AnswersController < ApplicationController
-    before_action :check_for_logged_in
+    before_action :check_for_logged_in, except: [:show]
     before_action :find_question, only: [:show, :create, :edit, :update, :destroy]
     before_action :find_answer, only: [:show, :edit, :update, :destroy]
 
     def new
         #answer belongs to question
         @answer = Answer.new
-        
+
     end
 
     def create

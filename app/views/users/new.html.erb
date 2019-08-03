@@ -1,20 +1,31 @@
+<div class="col-md-10 col-md-offset-1">
 <h1>Sign up here</h1>
 
 <%= form_for(@user) do |f| %>
+  <%= render partial: 'layouts/errors', locals: {object: @user} %>
 
+  <div class="form-group">
+    <%= f.label :username %> <br/>
+    <%= f.text_field :username, required:true %> <br/>
+  </div>
 
-  <%= f.label :username %>
-  <%= f.text_field :username, required:true %> <br/>
+  <div class="form-group">
+    <%= f.label :email %> <br/>
+    <%= f.email_field :email %> <br/>
+    </div>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %> <br/>
+  <div class="form-group">
+    <%= f.label :password %> <br/>
+    <%= f.password_field :password%> <br/> 
+  </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %> <br/> 
+  <div class="form-group">
+    <%= f.label :password_confirmation %> <br/>
+    <%= f.password_field :password_confirmation %> <br/> <br/>
+  </div>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %> <br/> <br/>
-
-  <%= f.submit "Sign Up" %>
+  <%= f.submit "Sign Up",  class: 'btn btn-success' %>
 
 <% end %>
+
+</div>

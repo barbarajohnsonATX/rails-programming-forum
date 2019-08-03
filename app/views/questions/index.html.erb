@@ -3,27 +3,21 @@
 
     <% if @questions_today.any? %>
         <h4>New today </h4>
-            <ul>
-                <% @questions_today.each do |q| %>
-                    <li><%= link_to q.title, question_path(q) %> by <%= q.user.username %> </li>
-                <% end %>  
-            </ul>
+        <%= render partial: 'questions/question', collection: @questions_today %>
     <% end %>
 
 
     <% if @questions_unanswered.any? %>
         <h4>Unanswered questions </h4>
-            <ul>
-                <% @questions_unanswered.each do |q| %>
-                    <li><%= link_to q.title, question_path(q) %> by <%= q.user.username %> </li>
-                <% end %>  
-            </ul>
+        <%= render partial: 'questions/question', collection: @questions_unanswered %>
     <% end %>  
 
 
-     <% if @questions %>
+     <% if @questions.any? %>
+     <h4>All questions </h4>
+
         <% @categories.each do |c| %>
-            <%= c.name %> 
+            <%= link_to c.name, category_path(c) %> 
             <ul>
                 <% if c.questions.any? %>
                     <% c.questions.order('updated_at DESC').each do |q| %>
@@ -36,13 +30,7 @@
             </ul>
         <% end %> 
     <% end %>
- 
 
- <!--
-    <div class="btn btn-info btn-xs">
-        <%= link_to 'Ask a Question', new_question_path, class: "btn" %>
-    </div>
--->
  
 
 </div>

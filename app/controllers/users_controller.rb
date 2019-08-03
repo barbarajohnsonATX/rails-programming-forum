@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :check_for_logged_in
+    before_action :check_for_logged_in, only: [:show]
     before_action :set_user, only: [:show]
 
     #load signup form
@@ -26,8 +26,10 @@ class UsersController < ApplicationController
         #answer belongs to user 
         @my_answers = Answer.answered_by(current_user)
         @my_questions_open = @my_questions.unanswered 
+        #unique categories in which questions belong 
+        @categories = current_user.categories.uniq
 
-    end 
+     end 
 
     private 
      

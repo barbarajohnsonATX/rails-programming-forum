@@ -2,8 +2,11 @@ class User < ApplicationRecord
     has_secure_password  #takes care of password validations 
     has_many :questions
     has_many :anwers
-    validates :username, :email, presence: true 
-    validates :username, :email, uniqueness: true 
+    has_many :categories, through: :questions
+ 
+    validates :username, presence: true 
+    validates :email, presence: true 
+    validates :email, uniqueness: true 
 
     def self.create_by_google_omniauth(auth)
         find_or_create_by(email: auth[:info][:email]) do |u| 

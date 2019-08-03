@@ -1,19 +1,19 @@
 <div class="col-md-10 col-md-offset-1">
+<div class="well">
 
 <p> Question: <%= @answer.question.title %> </p>
 <p> Description: <%= @answer.question.description %> </p>
-<p> Asked by: <%= @answer.question.user.username %> <%= time_ago_in_words(@question.created_at) %> ago.</p>
+<p> Asked by: <%= @answer.question.user.username %> <%= display_datetime(@question.created_at) %> ago.</p>
+ 
+<% if logged_in? && @answer.user_id == current_user.id  %>
+    <%= render 'form', answer: @answer, submit_text: "Edit"%> <br/>
+    <%= link_to "Delete", question_answer_path(@question, @answer), class: "btn btn-warning" , method: :delete, data: { confirm: "Are you sure?" } %>
 
-<% if logged_in? %>
- <%= render 'form', answer: @answer, submit_text: "Edit"%> <br/>
-
-
-
-     <% if @answer.user_id == current_user.id %>
-     <%= link_to "Delete", question_answer_path(@question, @answer), class: "btn btn-warning" , method: :delete, data: { confirm: "Are you sure?" } %>
-     <% end %>
 <% end %>
 
+<%= @answer.comment %>
+
+</div>
 </div>
 
  

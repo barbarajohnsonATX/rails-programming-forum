@@ -11,8 +11,9 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id 
             redirect_to questions_path 
         else 
+            flash[:notice] = "Login failed. Try again."
             redirect_to login_path 
-        end 
+         end 
     end 
 
     def home 

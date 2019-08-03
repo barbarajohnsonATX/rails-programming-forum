@@ -22,6 +22,7 @@ class QuestionsController < ApplicationController
             #render :show
             flash[:notice] = "Question successfully created."
         else
+            flash[:notice] = "Question failed to save."
             render :new
         end
     end

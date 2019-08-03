@@ -12,7 +12,7 @@ get '/auth/google_oauth2/callback' => 'sessions#omniauth'
 
 resources :questions
 
-resources :users  
+resources :users
 
 resources :categories do
     #resources :questions, except: [:index]

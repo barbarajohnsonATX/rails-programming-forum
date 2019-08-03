@@ -1,4 +1,5 @@
   <%= form_for ([@question, answer]) do |f| %>
+    <%= render partial: 'layouts/errors', locals: {object: answer} %>
 
     <div class="form-group">
         <%= f.label :comment  %>

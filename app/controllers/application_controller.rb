@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :check_for_logged_in?, :admin_only
+    helper_method :current_user, :logged_in?, :check_for_logged_in?, :admin_only, :display_datetime
 
     #private 
     def current_user
@@ -20,7 +20,10 @@ class ApplicationController < ActionController::Base
           flash[:notice] = "You must be an admin to perform that function!"
           redirect_to questions_path
         end
-      end
+    end
 
+    def display_datetime(dt)
+        dt.strftime("%m/%d/%Y 1:%M%P %Z")
+    end
 
 end

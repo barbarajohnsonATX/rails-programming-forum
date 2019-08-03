@@ -1,15 +1,18 @@
 <div class="col-md-10 col-md-offset-1">
  
+
+
     <div class="well">
         <%= @question.user.username %> asked <%= time_ago_in_words(@question.created_at) %> ago.
+        <p>Answered by <%= @question.users.uniq.count %> user(s). </p>
 
-        <h4><%= @question.category.name %> Question: </h4>
+        <h4><%= link_to @question.category.name, category_path(@question.category) %> Question: </h4>
         <p> <%= @question.title %> </p>
+
         <h4>Description: </h4>
         <p> <%= @question.description %> </p>
 
-        <% if logged_in? %>
-        <% if @question.user_id == current_user.id %>
+        <% if logged_in? && @question.user_id == current_user.id %>
         
             <div class="btn btn-info btn-xs">
                 <%= link_to "Edit Question", edit_question_path(@question), class:"btn" %>
@@ -18,21 +21,19 @@
             <div class="btn btn-warning btn-xs">
                 <%= link_to "Delete Question", question_path(@question), class:"btn", method: :delete, data: { confirm: "Are you sure?" } %>
             </div>
-        <% end %>
-        <% end %>
+         <% end %>
 
     </div>
  
-  
+    <!-- Add answers to the question --> 
     <% if @question.answers.any? %>
         <!-- Iterate through answers that belong to @question using answers/_answer.html -->
         <%= render @question.answers %>
     <% end %>
 
     <% if logged_in? %>
-
-    <h4>Add your answer:</h4>
-    <%= render 'answers/form', answer: @question.answers.build , submit_text: "Add"%>
+        <h4>Add your answer:</h4>
+        <%= render 'answers/form', answer: @question.answers.build , submit_text: "Add"%>
     <% end %>
 
 

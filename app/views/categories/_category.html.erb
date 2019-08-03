@@ -1,0 +1,8 @@
+<li> 
+     
+        <%= link_to category.name, category_path(category) %>  
+        <ul> <% category.questions.each do |q| %>
+                <li> <%= link_to q.title, question_path(q) %> </li>
+                <% end %>
+        </ul>
+</li> 

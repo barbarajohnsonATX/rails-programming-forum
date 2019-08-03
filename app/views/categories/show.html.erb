@@ -1,15 +1,7 @@
 <div class="col-md-10 col-md-offset-1">
 
 <h3>Questions about <%= @category.name %> </h3>
-
-
-<ul>
-<% @category.questions.each do |q| %>
-    
-    <li><%= link_to q.title, category_question_path(@category, q) %></li>
-
-<% end %> 
-</ul>
+<%= render partial: 'questions/question', collection: @category.questions %>
 
 <% if logged_in? && current_user.admin %>
     <%= render 'form', submit_text: "Edit Category"%>

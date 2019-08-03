@@ -1,0 +1,9 @@
+<div class="col-md-10 col-md-offset-1">
+
+  
+    <%= render 'form', submit_text: "Edit Category"%>
+    <%= link_to "Delete Category", admin_category_path(@category), class: "btn btn-warning" , method: :delete, data: { confirm: "Are you sure?" } %>
+
+ 
+
+</div>

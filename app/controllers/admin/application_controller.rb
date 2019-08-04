@@ -6,7 +6,7 @@ class Admin::ApplicationController < ApplicationController
     @answers = Answer.all
     @categories = Category.all 
     @users = User.all 
-    
+
   end
 
 
@@ -15,7 +15,7 @@ class Admin::ApplicationController < ApplicationController
 
 	def authorize_admin!
 		if !current_user.admin?
-			flash[:alert] = "You do not have permission to perform this action"
+			flash[:alert] = "You do not have permission to perform this action."
 			redirect_to questions_path
 		end
 	end

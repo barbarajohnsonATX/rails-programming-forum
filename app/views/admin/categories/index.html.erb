@@ -1,9 +1,14 @@
+<div class="col-md-10 col-md-offset-1">
+
 <ul>
 <% @categories.each do |c| %>
-    <li> <%= link_to c.name, admin_category_path(c) %>    </li>
+    <li> <%= link_to c.name, admin_category_path(c) %> - <%= c.questions.count %> questions  </li>
 <% end %>
 </ul>
 
- 
+<div class="btn btn-info btn-xs">
+    <%= link_to "Add a new category", new_admin_category_path, class:"btn" %>
+</div>
 
- 
+
+ </div>

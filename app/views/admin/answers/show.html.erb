@@ -1,0 +1,17 @@
+<div class="col-md-10 col-md-offset-1">
+<div class="well">
+
+<p> Question: <%= @answer.question.title %> </p>
+<p> Description: <%= @answer.question.description %> </p>
+<p> Asked by: <%= @answer.question.user.username %> <%= display_datetime(@question.created_at) %> ago.</p>
+ 
+    <%= render 'form', answer: @answer, submit_text: "Edit"%> <br/>
+    <%= link_to "Delete", admin_question_answer_path(@question, @answer), class: "btn btn-warning" , method: :delete, data: { confirm: "Are you sure?" } %>
+
+ 
+<%= @answer.comment %>
+
+</div>
+</div>
+
+ 

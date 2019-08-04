@@ -1,0 +1,8 @@
+<h4>Edit this comment: </h4>
+ 
+<%= form_for ([@question, @answer]) do |f| %>
+   <%= f.label :comment  %>
+   <%= f.text_area :comment, :rows => 5, class: "form-control" %>
+
+   <%= f.button :submit, :class => 'btn-custom' %>
+ <% end %>

@@ -1,6 +1,5 @@
-class QuestionsController < ApplicationController
-    before_action :check_for_logged_in, except: [:index, :show]
-    before_action :set_question, only: [:show, :edit, :update, :destroy]
+class Admin::QuestionsController < Admin::ApplicationController
+     before_action :set_question, except: [:index]
 
     def index
         @questions = Question.order('updated_at DESC')
@@ -9,23 +8,6 @@ class QuestionsController < ApplicationController
         @questions_unanswered = @questions.unanswered
       end
 
-     def new
-        @question = current_user.questions.build
-    end
-
-    def create
-        @question = current_user.questions.build(question_params)
-
-        if @question.save
-            #go to question/:id
-            redirect_to question_path(@question)
-            #render :show
-            flash[:notice] = "Question successfully created."
-        else
-            flash[:notice] = "Question failed to save."
-            render :new
-        end
-    end
           
      def show
         #return the category that the question belongs to 
@@ -36,13 +18,13 @@ class QuestionsController < ApplicationController
     def edit
         if @question.user_id != current_user.id 
             flash[:notice] = "You are not authorized to edit this question."
-            redirect_to question_path(@question)
+            redirect_to admin_question_path(@question)
         end 
     end
 
     def update         
         if @question.update(question_params)
-          redirect_to question_path(@question)
+          redirect_to admin_question_path(@question)
         else
           render :edit
         end
@@ -50,7 +32,7 @@ class QuestionsController < ApplicationController
 
     def destroy 
         @question.destroy
-        redirect_to questions_path
+        redirect_to admin_questions_path
     end 
 
     private
@@ -63,4 +45,5 @@ class QuestionsController < ApplicationController
         params.require(:question).permit(:title, :description, :category_id)
     end 
 
-end
+end 
+

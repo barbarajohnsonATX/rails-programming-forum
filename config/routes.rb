@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 namespace :admin do 
     root 'application#index'
     resources :categories
+    resources :users 
+    resources :questions do 
+        resources :answers
+    end 
 end 
 
  

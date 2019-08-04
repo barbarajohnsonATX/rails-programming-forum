@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
     before_action :check_for_logged_in, except: [:show]
-    before_action :find_question, only: [:show, :create, :edit, :update, :destroy]
-    before_action :find_answer, only: [:show, :edit, :update, :destroy]
+    before_action :set_question, only: [:show, :create, :edit, :update, :destroy]
+    before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
     def new
         #answer belongs to question
@@ -47,11 +47,11 @@ class AnswersController < ApplicationController
 
     private 
 
-    def find_question
+    def set_question
         @question = Question.find(params[:question_id])
     end 
 
-    def find_answer
+    def set_answer
         @answer = @question.answers.find(params[:id])
     end 
 

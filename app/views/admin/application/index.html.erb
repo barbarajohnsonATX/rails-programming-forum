@@ -2,10 +2,9 @@
 
     <h4>Admin Dashboard Panel </h4>
 
-    Number of users <%= @users.count %> <br>
-    Number of questions <%= @questions.count %> <br>
-    Number of categories <%= @categories.count %> <br>
-    Number of answers <%= @answers.count %> <br>
+    Number of <%= link_to "Categories", admin_categories_path %>: <%= @categories.count %> <br>
 
-    <%= link_to "Admin Categories", admin_categories_path %>
-</div>
+    Number of <%= link_to "Users", admin_users_path %>: <%= @users.count %> <br>
+    Number of <%= link_to "Questions and Answers", admin_questions_path %>: <%= @questions.count %> questions and <%= @answers.count %> answers <br>
+
+ </div>

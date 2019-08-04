@@ -1,6 +1,5 @@
-<%= form_for(@category) do |f|%>
-
- 
+<%= form_for([:admin, @category]) do |f|%>
+    <%= render partial: 'layouts/errors', locals: {object:  @category} %>
 
     <div class="form-group">
         <%= f.label :name%> <br/>

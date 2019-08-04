@@ -14,6 +14,7 @@ class Admin::CategoriesController < Admin::ApplicationController
         if @category.save
           redirect_to admin_categories_path
         else
+            flash[:notice] = "Category failed to save."
           render :new
         end
     end 
@@ -45,5 +46,5 @@ class Admin::CategoriesController < Admin::ApplicationController
     def category_params
         params.require(:category).permit(:name)
     end
-    
+
 end 

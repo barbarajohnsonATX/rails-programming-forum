@@ -1,0 +1,34 @@
+<div class="well">
+<%= @user.username %> asked <%= time_ago_in_words(@question.created_at) %> ago.
+
+
+<h4><%= link_to @question.category.name, category_path(@question.category) %> </h4>
+<h4>Question: </h4>
+<p> <%= @question.title %> </p>
+
+<h4>Description: </h4>
+<p> <%= @question.description %> </p>
+
+<% if logged_in? && @question.user_id == current_user.id %>
+
+   <div class="btn btn-info btn-xs">
+       <%= link_to "Edit Question", edit_question_path(@question), class:"btn" %>
+   </div>
+
+   <div class="btn btn-warning btn-xs">
+       <%= link_to "Delete Question", question_path(@question), class:"btn", method: :delete, data: { confirm: "Are you sure?" } %>
+   </div>
+<% end %>
+
+</div>
+
+<!-- Add answers to the question --> 
+<% if @question.answers.any? %>
+<!-- Iterate through answers that belong to @question using answers/_answer.html -->
+<%= render @question.answers %>
+<% end %>
+
+
+
+
+</div>

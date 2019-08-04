@@ -1,0 +1,12 @@
+
+<div class="col-md-10 col-md-offset-1">
+<h4>Registered Users </h4>
+
+<ol>
+
+<% @users.each do |u| %>
+    <li> <%= link_to u.username, admin_user_path(u) %>  </li>
+<% end %>
+
+</ol>
+</div>

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_secure_password  #takes care of password validations 
     has_many :questions
-    has_many :anwers
+    has_many :answers
     has_many :categories, through: :questions
  
     validates :username, presence: true 

@@ -1,0 +1,13 @@
+<div class="well">
+
+<%= answer.user.username %> answered <%= time_ago_in_words(@question.created_at) %>. <br/>
+<%= link_to "Details", question_answer_path(@question, answer) %> <br/>
+
+ 
+<h4>Edit your answer:</h4>
+<%= render 'answers/form', answer: answer, submit_text: "Edit" %> <br/>
+<%= link_to "Delete", admin_question_answer_path(@question, answer), class: "btn btn-warning" , method: :delete, data: { confirm: "Are you sure?" } %>
+
+ 
+
+</div>

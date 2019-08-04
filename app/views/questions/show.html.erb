@@ -1,12 +1,11 @@
 <div class="col-md-10 col-md-offset-1">
  
 
-
     <div class="well">
-        <%= @question.user.username %> asked <%= time_ago_in_words(@question.created_at) %> ago.
-        <p>Answered by <%= @question.users.uniq.count %> user(s). </p>
-
-        <h4><%= link_to @question.category.name, category_path(@question.category) %> Question: </h4>
+         <%= @user.username %> asked <%= time_ago_in_words(@question.created_at) %> ago.
+         
+        <h4><%= link_to @question.category.name, category_path(@question.category) %> </h4>
+        <h4>Question: </h4>
         <p> <%= @question.title %> </p>
 
         <h4>Description: </h4>

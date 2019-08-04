@@ -22,10 +22,13 @@ class UsersController < ApplicationController
 
     def show 
          #user has many questions 
-        @my_questions = current_user.asked_by_me
+         @my_questions = current_user.questions
+
         #answer belongs to user 
-        @my_answers = Answer.answered_by(current_user)
+         @my_answers = current_user.answers
+
         @my_questions_open = @my_questions.unanswered 
+
         #unique categories in which questions belong 
         @categories = current_user.categories.uniq
 

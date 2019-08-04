@@ -17,10 +17,10 @@ class AnswersController < ApplicationController
 
         if @answer.save
             flash[:notice] = "Comment saved successfully."
-            redirect_to question_path(@question)
+            #redirect_to question_path(@question)
         else 
             flash[:notice] = "Comment failed to save."
-        end 
+         end 
         redirect_to question_path(@question)
 
 

@@ -42,7 +42,7 @@ class Admin::QuestionsController < Admin::ApplicationController
     end
 
     def question_params
-        params.require(:question).permit(:title, :description, :category_id)
+        params.require(:question).permit(:title, :description, :category_id, :tag_list)
     end 
 
 end 

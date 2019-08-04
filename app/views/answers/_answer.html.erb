@@ -12,6 +12,7 @@
             <%= link_to "Delete", question_answer_path(@question, answer), class: "btn btn-warning" , method: :delete, data: { confirm: "Are you sure?" } %>
         
     <% else %>
+ 
            <%= answer.comment %> <br/> <br/>
 
     <% end %>

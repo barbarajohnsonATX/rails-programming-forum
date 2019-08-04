@@ -4,7 +4,6 @@ class QuestionsController < ApplicationController
 
     def index
         @questions = Question.order('updated_at DESC')
-        @categories = Category.all 
         @questions_today = @questions.created_today
         @questions_unanswered = @questions.unanswered
       end
@@ -60,7 +59,7 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-        params.require(:question).permit(:title, :description, :category_id)
+        params.require(:question).permit(:title, :description, :category_id, :tag_list)
     end 
 
 end

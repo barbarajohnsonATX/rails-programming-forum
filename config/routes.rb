@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :question_tags
+  resources :tags
 namespace :admin do 
     root 'application#index'
     resources :categories
@@ -31,5 +33,8 @@ end
 resources :questions do 
     resources :answers
 end 
+
+resources :tags, only: [:show]
+
 
 end

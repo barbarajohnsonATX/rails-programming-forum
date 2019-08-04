@@ -1,35 +1,23 @@
 <div class="col-md-10 col-md-offset-1">
+
     <h2>Questions</h2>
 
      
     <% if @questions_today.any? %>
         <h4>New today </h4>
-        <%= render partial: 'questions/question', collection: @questions_today %>
+        <%= render partial: 'question', collection: @questions_today %>
     <% end %>
 
 
     <% if @questions_unanswered.any? %>
         <h4>Unanswered questions </h4>
-        <%= render partial: 'questions/question', collection: @questions_unanswered %>
+        <%= render partial: 'question', collection: @questions_unanswered %>
     <% end %>  
 
 
      <% if @questions.any? %>
      <h4>All questions </h4>
-
-        <% @categories.each do |c| %>
-            <%= link_to c.name, category_path(c) %> 
-            <ul>
-                <% if c.questions.any? %>
-                    <% c.questions.order('updated_at DESC').each do |q| %>
-                        <li><%= link_to q.title, question_path(q) %>    </li>  
-                    <% end %>
-
-                <% else %> 
-                    No questions yet.
-                <% end %>
-            </ul>
-        <% end %> 
+        <%= render partial: 'question', collection: @questions %>
     <% end %>
 
  

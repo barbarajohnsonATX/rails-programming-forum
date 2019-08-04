@@ -1,16 +1,17 @@
 <div class="col-md-10 col-md-offset-1">
 <div class="well">
 
+<p> Asked by: <%= @answer.question.user.username %> <%= display_datetime(@question.created_at) %></p>
 <p> Question: <%= @answer.question.title %> </p>
 <p> Description: <%= @answer.question.description %> </p>
-<p> Asked by: <%= @answer.question.user.username %> <%= display_datetime(@question.created_at) %> ago.</p>
  
 <% if logged_in? && @answer.user_id == current_user.id  %>
     <%= render 'form', answer: @answer, submit_text: "Edit"%> <br/>
     <%= link_to "Delete", question_answer_path(@question, @answer), class: "btn btn-warning" , method: :delete, data: { confirm: "Are you sure?" } %>
 
 <% end %>
-
+<br>
+<p> Answered by: <%= @answer.user.username %> <%= display_datetime(@answer.created_at) %></p>
 <%= @answer.comment %>
 
 </div>

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_secure_password  #takes care of password validations 
-    has_many :questions
-    has_many :answers
+    has_many :questions, dependent: :destroy 
+    has_many :answers, dependent: :destroy
     has_many :categories, through: :questions
  
     validates :username, presence: true 
@@ -16,12 +16,12 @@ class User < ApplicationRecord
         end 
     end 
 
-    def asked_by_me
-       questions 
-    end 
+    # def asked_by_me
+    #    questions 
+    # end 
 
-    def answered_by_me 
-        answers
-    end 
+    # def answered_by_me 
+    #     answers
+    # end 
 
 end

@@ -2,8 +2,8 @@
     <h2>Questions</h2>
 
      <% if @questions.any? %>
-     <h4>All questions </h4>
-
+        <h4>All questions </h4>
+    
         <% @categories.each do |c| %>
             <%= link_to c.name, category_path(c) %> 
             <ul>

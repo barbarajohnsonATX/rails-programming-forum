@@ -11,6 +11,16 @@
         <h4>Description: </h4>
         <p> <%= @question.description %> </p>
 
+        <h4>Tags: </h4> 
+        <% @question.tags.each do |t| %> 
+            <%= t.name %> 
+            <% end %>
+            <br/>
+            <br/>
+
+        
+
+
         <% if logged_in? && @question.user_id == current_user.id %>
         
             <div class="btn btn-info btn-xs">

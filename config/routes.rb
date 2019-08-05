@@ -36,5 +36,6 @@ end
 
 resources :tags, only: [:show]
 
+get 'search' => 'search#index'
 
 end

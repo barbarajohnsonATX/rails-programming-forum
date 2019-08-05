@@ -1,6 +1,5 @@
 <div class="col-md-10 col-md-offset-1">
  
-
     <div class="well">
          <%= @user.username %> asked <%= time_ago_in_words(@question.created_at) %> ago.
          
@@ -13,13 +12,10 @@
 
         <h4>Tags: </h4> 
         <% @question.tags.each do |t| %> 
-            <%= t.name %> 
+            <%= link_to t.name, tag_path(t) %> 
             <% end %>
             <br/>
             <br/>
-
-        
-
 
         <% if logged_in? && @question.user_id == current_user.id %>
         

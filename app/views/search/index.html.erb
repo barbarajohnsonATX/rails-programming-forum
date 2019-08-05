@@ -1,0 +1,8 @@
+<div class="col-md-10 col-md-offset-1">
+<% if @tag %>
+    <%= render partial: 'questions/question', collection: @tag.questions %>
+<% else %>
+    No tags found.
+<% end %>
+
+</div>

@@ -6,6 +6,9 @@ class QuestionsController < ApplicationController
         @questions = Question.order('updated_at DESC')
         @questions_today = @questions.created_today
         @questions_unanswered = @questions.unanswered
+
+
+        
       end
 
      def new

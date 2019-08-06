@@ -1,6 +1,10 @@
+  
+  <!-- action="/questions/question_id/answers" method="post" -->
   <%= form_for ([@question, answer]) do |f| %>
+
     <%= render partial: 'layouts/errors', locals: {object: answer} %>
 
+    <!-- answer[comment] -->
     <div class="form-group">
         <%= f.label :comment  %>
         <%= f.text_area :comment, :rows => 5, class: "form-control" %>

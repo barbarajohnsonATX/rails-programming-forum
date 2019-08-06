@@ -1,8 +1,12 @@
 <div class="col-md-10 col-md-offset-1">
+<h4>Search results for <%= @search_tag %>: </h4>
+
 <% if @tag %>
     <%= render partial: 'questions/question', collection: @tag.questions %>
 <% else %>
-    No tags found.
+    <p>Tag <%= @search_tag %> not found. </p>
 <% end %>
+
+<%= link_to "Back to Questions", questions_path %>
 
 </div>

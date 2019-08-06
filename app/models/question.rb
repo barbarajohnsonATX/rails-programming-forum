@@ -11,6 +11,8 @@ class Question < ApplicationRecord
     has_many :question_tags, dependent: :destroy
 	has_many :tags, through: :question_tags
  
+ 
+
     validates :title, presence: true
     validates :description, presence: true
     validates :category_id, presence: true
@@ -33,7 +35,7 @@ class Question < ApplicationRecord
         self.tags = new_or_existing_tags
  	end
 
-     # Join all tag names with a comma to populate tags field
+     # Join all tag names with a comma to populate tag_list field
     def tag_list 
         tags.map do |t| 
             t.name 

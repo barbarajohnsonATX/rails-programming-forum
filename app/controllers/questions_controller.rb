@@ -5,7 +5,10 @@ class QuestionsController < ApplicationController
     def index
         @questions = Question.order('updated_at DESC')
         @questions_today = @questions.created_today
+
+        #SELECT  "questions".* FROM "questions" WHERE "questions"."answers_count" IS NULL ORDER BY updated_at DESC LIMIT ? 
         @questions_unanswered = @questions.unanswered
+        byebug
 
 
         
@@ -21,7 +24,6 @@ class QuestionsController < ApplicationController
         if @question.save
             #go to question/:id
             redirect_to question_path(@question)
-            #render :show
             flash[:notice] = "Question successfully created."
         else
             flash[:notice] = "Question failed to save."

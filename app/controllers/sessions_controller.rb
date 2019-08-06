@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
 
     def new 
-        @user = User.new
+        #Not needed if using form_for :user 
+        #@user = User.new
         render :login
     end 
 

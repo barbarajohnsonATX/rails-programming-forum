@@ -1,33 +1,36 @@
  
+<!-- action='/questions', method='post' -->
 <%= form_for(@question) do |f|%>
 
     <%= render partial: 'layouts/errors', locals: {object: @question} %>
 
-
+    <!-- question[category_id] -->
     <div class="form-group">
         <%= f.label :category_id, "Category"%> <br/>
         <%= f.collection_select :category_id, Category.all, :id, :name, prompt: true, class: "dropdown-menu" %> <br/>
     </div>
 
+    <!-- question[title] -->
     <div class="form-group">
         <%= f.label :title%> <br/>
         <%= f.text_field :title, class: "form-control" %> <br/>
     </div>
 
+    <!-- question[description] -->
     <div class="form-group">
         <%= f.label :description%> <br/>
         <%= f.text_area :description, :rows => 5, class: "form-control" %> <br/>
     </div>
 
+    <!-- question[tag_list] -->
     <div class="form-group">
-        <%= f.label :tags%> <br/>
+        <%= f.label :tag_list%> <br/>
         <%= f.text_area :tag_list, placeholder: "Enter tags separated by a comma", class: "form-control" %> <br/>
     </div>  
  
-
     <br/>
   
-    <%= f.submit "Ask Question", class: 'btn btn-success' %>
+    <%= f.submit submit_text, class: 'btn btn-success' %>
  
 <% end %>
  

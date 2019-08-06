@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :question_tags
-  resources :tags
+
+
 namespace :admin do 
     root 'application#index'
     resources :categories
@@ -20,22 +20,23 @@ post '/login' => 'sessions#create'
 delete '/logout' => 'sessions#destroy'
 get '/auth/google_oauth2/callback' => 'sessions#omniauth'
 
+resources :question_tags
+resources :tags, only: [:show]
 
-resources :questions
-
+#resources :questions
 resources :users
 
 resources :categories do
-    #resources :questions, except: [:index]
-    resources :questions
+     resources :questions
 end
 
 resources :questions do 
     resources :answers
 end 
 
-resources :tags, only: [:show]
 
 get 'search' => 'search#index'
+
+ 
 
 end

@@ -4,6 +4,8 @@ class User < ApplicationRecord
     has_many :answers, dependent: :destroy
     has_many :categories, through: :questions
  
+
+
     validates :username, presence: true 
     validates :email, presence: true 
     validates :email, uniqueness: true 
@@ -16,12 +18,22 @@ class User < ApplicationRecord
         end 
     end 
 
-    # def asked_by_me
-    #    questions 
-    # end 
+ 
 
-    # def answered_by_me 
-    #     answers
-    # end 
+
+    def heart!(question)
+        self.hearts.create!(question_id: question.id)
+    end
+      
+    # destroys a heart with matching question_id and user_id
+    def unheart!(question)
+        heart = self.hearts.find_by(question_id: question.id)
+        heart.destroy!
+    end
+      
+    # returns true of false if a question is hearted by user
+    def heart?(question)
+        self.hearts.find_by(question_id: question.id)
+    end
 
 end

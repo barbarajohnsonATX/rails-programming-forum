@@ -11,12 +11,13 @@
         <p> <%= @question.description %> </p>
 
         <h4>Tags: </h4> 
-        <% @question.tags.each do |t| %> 
-            <%= link_to t.name, tag_path(t) %> 
-            <% end %>
+        <!-- Iterate through all tags that belong to @question in _tag.html.erb -->
+        <%= render @question.tags %>
+
             <br/>
             <br/>
 
+        <!-- Only the user who created the quesiton can edit/delete it -->
         <% if logged_in? && @question.user_id == current_user.id %>
         
             <div class="btn btn-info btn-xs">
@@ -38,7 +39,8 @@
 
     <% if logged_in? %>
         <h4>Add your answer:</h4>
-        <%= render 'answers/form', answer: @question.answers.build , submit_text: "Add"%>
+        <%= render partial: 'answers/form', locals: {answer: @question.answers.build , submit_text: "Add Answer"} %>
+ 
     <% end %>
 
 

@@ -3,7 +3,7 @@
 <h3> <%= current_user.username %>'s Page </h3>
 <br>
 
-<h4> My questions by category </h4>
+<h4> My activities by category </h4>
 <%= render @categories %>
 <br>
 
@@ -15,6 +15,9 @@
 <%= render partial: 'questions/question', collection: @my_questions.unanswered %>
 <br>
 
+<h4> Questions I liked:</h4>
+<%= render partial: 'questions/question', collection: @my_likes %>
+<br>
 
  
  </div>

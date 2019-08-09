@@ -9,9 +9,9 @@
     <br>
     
     <% if logged_in? && @answer.user_id == current_user.id  %>
-        <%= render 'form', answer: @answer, submit_text: "Edit Answer"%> <br/>
+        <%= render partial: 'form', locals: {answer: @answer , submit_text: "Edit Answer"} %> <br/>
         <%= link_to "Delete Answer", question_answer_path(@question, @answer), class: "btn btn-warning" , method: :delete, data: { confirm: "Are you sure?" } %>
-
+  
     <% else %>
         <p> Answered by: <%= @answer.user.username %> <%= display_datetime(@answer.created_at) %></p>
         <%= @answer.comment %>

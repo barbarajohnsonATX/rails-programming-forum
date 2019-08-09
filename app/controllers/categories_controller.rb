@@ -17,7 +17,11 @@ class CategoriesController < ApplicationController
     # end 
 
     def index
-        @categories = Category.all
+        #@categories = Category.all  
+        #optimize query using .includes so it runs just 2 ActiveRecord queries, compared to 
+        #Category.all which runs (num of categories table entries + 1) queries
+        @categories = Category.includes(:questions)
+
     end
     
     def show

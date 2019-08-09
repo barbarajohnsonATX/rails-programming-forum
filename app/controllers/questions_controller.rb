@@ -3,14 +3,18 @@ class QuestionsController < ApplicationController
     before_action :set_question, only: [:show, :edit, :update, :destroy]
 
     def index
-        @questions = Question.order('updated_at DESC')
+        @questions = Question.all
+        
+        #@categories = Category.all
+        @categories = Category.includes(:questions)
+
         @questions_today = @questions.created_today
 
+        #chain scope methods
         #SELECT  "questions".* FROM "questions" WHERE "questions"."answers_count" IS NULL ORDER BY updated_at DESC LIMIT ? 
-        @questions_unanswered = @questions.unanswered
-        byebug
-
-
+        @questions_unanswered = @questions.unanswered.order_newest
+        
+         @questions_most_popular = @questions.top(5)
         
       end
 

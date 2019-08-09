@@ -1,5 +1,9 @@
 <div class="col-md-10 col-md-offset-1">
- 
- <%= render 'form', answer: @answer, submit_text: "Edit Answer"%> <br/>
 
- </div> 
+    <% if logged_in? && @answer.user_id == current_user.id  %>
+        <%= render partial: 'form', locals: {answer: @answer , submit_text: "Edit Answer"} %>
+        <% else %>
+        <p> You are not allowed to edit this. </p>
+     <% end %>
+
+</div> 

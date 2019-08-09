@@ -3,10 +3,10 @@ class User < ApplicationRecord
     has_many :questions, dependent: :destroy 
     has_many :answers, dependent: :destroy
     has_many :categories, through: :questions
- 
-
+    has_many :likes, dependent: :destroy
 
     validates :username, presence: true 
+    validates :username, uniqueness: true 
     validates :email, presence: true 
     validates :email, uniqueness: true 
 

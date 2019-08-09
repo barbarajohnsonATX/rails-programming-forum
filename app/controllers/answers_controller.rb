@@ -1,13 +1,18 @@
 class AnswersController < ApplicationController
     before_action :check_for_logged_in, except: [:show]
-    before_action :set_question, only: [:show, :create, :edit, :update, :destroy]
+    before_action :set_question, only: [:index, :show, :create, :edit, :update, :destroy]
     before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
-    def new
-        #answer belongs to question
-        @answer = Answer.new
+    def index 
+        @answers = @question.answers
+    end 
 
-    end
+     
+    def new 
+        @question = Question.find(params[:question_id])
+
+    end 
+
 
     def create
         #answer belongs to question and user

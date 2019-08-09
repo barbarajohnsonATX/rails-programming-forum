@@ -5,7 +5,7 @@ class Admin::QuestionsController < Admin::ApplicationController
         @questions = Question.order('updated_at DESC')
         @categories = Category.all 
         @questions_today = @questions.created_today
-        @questions_unanswered = @questions.unanswered
+        @questions_unanswered = @questions.unanswered 
       end
 
           

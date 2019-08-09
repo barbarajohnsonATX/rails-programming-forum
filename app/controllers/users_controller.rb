@@ -15,6 +15,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to questions_path 
         else 
+            #if @user does not save, it adds errors in @user.errors
             render :new
         end 
 
@@ -24,14 +25,15 @@ class UsersController < ApplicationController
          #user has many questions 
          @my_questions = current_user.questions
 
-        #answer belongs to user 
-         @my_answers = current_user.answers
+        #answer belongs to user
+        @my_answers = current_user.answers
 
         @my_questions_open = @my_questions.unanswered 
 
         #unique categories in which questions belong 
         @categories = current_user.categories.uniq
 
+        @my_likes = Question.liked_by(current_user)
      end 
 
     private 

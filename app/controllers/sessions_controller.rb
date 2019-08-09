@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
     def new 
-        #Not needed if using form_for :user 
+        #@user = User.new not needed if using form_for :user 
         #@user = User.new
         render :login
     end 
@@ -11,11 +11,14 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id 
             if current_user.admin?
+                flash[:notice] = "You are now logged in as an admin."
                 redirect_to admin_root_path
             else 
+                flash[:notice] = "You are now logged in."
                 redirect_to questions_path 
             end
         else 
+            #redirect instead of render so password is not stored when login fails
             flash[:notice] = "Login failed. Try again."
             redirect_to login_path 
          end 

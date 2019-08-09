@@ -1,22 +1,21 @@
-<div class="col-md-10 col-md-offset-1">
+ <div class="wrapper">
+
+ <div class="col-md-10 col-md-offset-1 text-center">
+ 
+
     <h2>Welcome, programmers!</h2>
 
     <br/>
     <br/>
 
 
-    <div class="btn btn-default btn-xs">
-        <%= link_to "Sign up", signup_path, class: "btn" %>
-    </div>
-     or 
-
-    <div class="btn btn-default btn-xs">
-        <%= link_to "Log in", login_path, class: "btn" %>
-    </div>
-    
-    or 
-    <div class="btn btn-default btn-xs">
-        <%= link_to "Sign in with Google", '/auth/google_oauth2', class: "btn" %>
+    <div class="row">
+        <% if !logged_in? %>
+            <%= link_to "Sign up", signup_path, class: "btn btn-small btn-info" %>
+            <%= link_to "Log in", login_path, class: "btn btn-small btn-info" %>
+            <%= link_to "Sign in with Google", '/auth/google_oauth2', class: "btn btn-small btn-info" %>
+        <% end %>
     </div>
 
+</div>
 </div>

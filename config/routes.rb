@@ -7,7 +7,7 @@ namespace :admin do
     resources :categories
     resources :users 
     resources :questions do 
-        resources :answers
+        resources :answers, only: [:index, :new, :create]
     end 
 end 
 
@@ -31,6 +31,7 @@ resources :categories do
 end
 
 resources :questions do 
+    resources :likes
     resources :answers
 end 
 

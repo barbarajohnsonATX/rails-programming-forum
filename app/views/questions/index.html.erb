@@ -1,47 +1,95 @@
-<div class="col-md-10 col-md-offset-1">
+ 
+ 
 
+  <div class="col text-center">
+   <h3>Questions</h3>
+  </div>
 
+  <div class="row">
 
-      <div class="col-sm-3 pull-right">
-        <div class="sidebar">
-          <ul class="nav nav-pills nav-stacked">
-            <li><% @categories.each do |c| %></li>
-            <li><%= link_to c.name.upcase, category_path(c) %></li>
-            <% end %>
-          </ul>
+    <div class="questions-today col-md-3">
+        <div class="card">
+            <div class="card-header">
+              <h4>New today </h4>
+            </div>
+            <div class="card-body">
+              <% if @questions_today.any? %>
+                <%= render partial: 'question', collection: @questions_today %>
+              <% else %>
+                <p>None </p>
+              <% end %> 
+            </div>
+        </div>
+    </div>
+
+    <div class="questions-unanswered col-md-3">
+      <div class="card">
+        <div class="card-header">  
+          <h4>Unanswered questions </h4>
+        </div>
+        <div class="card-body">
+          <% if @questions_unanswered.any? %>
+            <%= render partial: 'question', collection: @questions_unanswered %>
+          <% else %>
+            <p> None </p>
+          <% end %>  
+        </div>
       </div>
     </div>
 
-     <h2>Questions</h2>
+  
+  <div class="questions-newest col-md-3">
+    <div class="card">
+      <div class="card-header">  
+        <h4>Most liked questions </h4>
+      </div>
+      <div class="card-body">
+        <% if @questions_most_likes %>
+          <%= render partial: 'question', collection: @questions_most_likes %>
+        <% else %>
+          <p>None </p>
+        <% end %>
+    </div>
+    </div>
+  </div>
+
+<!--
+    <div class="questions-popular col-md-3">
+      <div class="card">
+        <div class="card-header">   
+          <h4>Most answered questions </h4>
+        </div>
+
+        <div class="card-body">
+          <% if @questions_most_popular.any? %>
+            <%= render partial: 'question', collection: @questions_most_popular %>
+          <% else %>
+            <p>None </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+-->
+
+
+    <div class="questions-newest col-md-3">
+      <div class="card">
+        <div class="card-header">  
+          <h4>All questions </h4>
+        </div>
+        <div class="card-body">
+          <% if @questions.order_newest.any? %>
+            <%= render partial: 'question', collection: @questions.order_newest %>
+          <% else %>
+            <p>None </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+   
  
-     <% if @questions_today.any? %>
-        <h4>New today </h4>
-        <%= render partial: 'question', collection: @questions_today %>
-    <% end %> 
-    <br/>
-            
-    <% if @questions_most_popular.any? %>
-        <h4>Most answered questions </h4>
-        <%= render partial: 'question', collection: @questions_most_popular %>
-    <% end %>
-    <br/>
-
-    <% if @questions_unanswered.any? %>
-        <h4>Unanswered questions </h4>
-        <%= render partial: 'question', collection: @questions_unanswered %>
-    <% end %>  
-    <br/>
-
-
-     <% if @questions.order_newest.any? %>
-     <h4>All questions </h4>
-        <%= render partial: 'question', collection: @questions.order_newest %>
-    <% end %>
-    <br/>
-
-
-</div>
-
 
 
    

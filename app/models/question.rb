@@ -21,6 +21,7 @@ class Question < ApplicationRecord
     scope :unanswered, -> { where(answers_count: nil) }
     scope :top, -> (n) { order(answers_count: :desc).limit(n) }
     scope :order_newest, ->  { order ('updated_at DESC') }
+    scope :most_likes, -> (x) { order(likes_count: :desc).limit(x) }
 
     #join Question and Like tables, and get likes with user_id=user.id
     scope :liked_by, -> (user) { joins(:likes).where(likes: {user_id: user.id}) }
@@ -28,12 +29,12 @@ class Question < ApplicationRecord
 
     def tag_list=(names)
         #Collect the individual names in an array
-         tag_names = names.split(",").map do |n| 
+         tag_names = names.split(",").collect do |n| 
             n.strip.downcase
          end.uniq
 
         #Find the tag in db, or create a new one if it does not exist
-        new_or_existing_tags = tag_names.map do |tag_name| 
+        new_or_existing_tags = tag_names.collect do |tag_name| 
             Tag.find_or_create_by(name: tag_name)
         end 
 

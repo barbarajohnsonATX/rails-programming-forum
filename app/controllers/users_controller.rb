@@ -26,7 +26,7 @@ class UsersController < ApplicationController
          @my_questions = current_user.questions
 
         #answer belongs to user
-        @my_answers = current_user.answers
+        @answered_questions = current_user.answers.collect { |a| a.question}.uniq
 
         @my_questions_open = @my_questions.unanswered 
 

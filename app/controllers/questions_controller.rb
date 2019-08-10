@@ -14,8 +14,9 @@ class QuestionsController < ApplicationController
         #SELECT  "questions".* FROM "questions" WHERE "questions"."answers_count" IS NULL ORDER BY updated_at DESC LIMIT ? 
         @questions_unanswered = @questions.unanswered.order_newest
         
-         @questions_most_popular = @questions.top(5)
-        
+        @questions_most_popular = @questions.top(5)
+        @questions_most_likes = @questions.most_likes(5)
+
       end
 
      def new

@@ -31,8 +31,8 @@ resources :categories do
 end
 
 resources :questions do 
-    resources :likes
-    resources :answers
+    resources :likes, only: [:create, :destroy]
+    resources :answers  
 end 
 
 

@@ -1,0 +1,21 @@
+
+        <p><%= @question.likes.count %> <%= (@question.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+ 
+        <% if logged_in? %>
+
+         <!-- Check if current_user has alrady liked this question -->
+            <% user_has_liked = @question.likes.find { |like| like.user_id == current_user.id} %>
+            
+            <% if user_has_liked %>
+                 <%= button_to question_like_path(@question, user_has_liked), method: :delete do %>
+                    <i class="fas fa-heart", style="color:red" ></i>  
+                <% end %>
+            
+            <% else %>
+                <%= button_to question_likes_path(@question), method: :post do %>
+                    <i class="far fa-heart"></i>  
+                <% end %>
+            
+            <% end %>
+        <% end %>
+

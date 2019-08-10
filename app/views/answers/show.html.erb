@@ -3,9 +3,11 @@
 
     <div class="well">
 
-    <p> Asked by: <%= @answer.question.user.username %> <%= display_datetime(@question.created_at) %></p>
-    <p> Question: <%= @answer.question.title %> </p>
-    <p> Description: <%= @answer.question.description %> </p>
+    <p> <strong>Asked by:</strong> <%= @answer.question.user.username %> on <%= display_datetime(@question.created_at) %></p>
+    <p> <strong>Question:</strong>  <%= @answer.question.title %> </p>
+    <p> <strong>Description:</strong>  <%= @answer.question.description %> </p>
+    <p> <strong>Tags:</strong>  <%= @answer.question.tag_list %> </p>
+
     <br>
     
     <% if logged_in? && @answer.user_id == current_user.id  %>
@@ -13,7 +15,7 @@
         <%= link_to "Delete Answer", question_answer_path(@question, @answer), class: "btn btn-warning" , method: :delete, data: { confirm: "Are you sure?" } %>
   
     <% else %>
-        <p> Answered by: <%= @answer.user.username %> <%= display_datetime(@answer.created_at) %></p>
+        <p> <strong>Answered by:</strong>  <%= @answer.user.username %> <%= display_datetime(@answer.created_at) %></p>
         <%= @answer.comment %>
 
     <% end %>

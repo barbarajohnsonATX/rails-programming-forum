@@ -1,12 +1,30 @@
-<div class="col-md-10 col-md-offset-1">
+ 
 
-<h3>Questions about <%= @category.name %> </h3>
-<%= render partial: 'questions/question', collection: @category.questions %>
+<div class="row">
 
-<% if logged_in? && current_user.admin %>
-    <%= render 'form', submit_text: "Edit Category"%>
-    <%= link_to "Delete Category", category_path(@category), class: "btn btn-warning" , method: :delete, data: { confirm: "Are you sure?" } %>
+    <div class="questions-by-category col-md-8 col-md-offset-2">
+        <div class="card">
+            <div class="card-header text-center">
+            <h4>Questions about <%= @category.name %>  </h4>
+            </div>
+            <div class="card-body">
+            <% if @category.questions.any? %>
+                <%= render partial: 'questions/question', collection: @category.questions %>
+            <% else %>
+                <p>None </p>
+            <% end %> 
+            </div>
+        </div>
+    </div>
+</div>
 
-<% end %>
+<div class="col-md-4 col-md-offset-2">
+
+    <% if logged_in? && current_user.admin %>
+        <%= render 'form', submit_text: "Edit Category"%>
+        <%= link_to "Delete Category", category_path(@category), class: "btn btn-warning" , method: :delete, data: { confirm: "Are you sure?" } %>
+
+    <% end %>
 
 </div>
+ 

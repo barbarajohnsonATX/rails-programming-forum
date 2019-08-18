@@ -15,8 +15,8 @@ class User < ApplicationRecord
             u.username = auth[:info][:name]
             #secure, randomly generated password
             u.password = SecureRandom.hex 
-        end 
     end 
+end 
 
  
 

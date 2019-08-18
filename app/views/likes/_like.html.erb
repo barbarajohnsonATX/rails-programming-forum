@@ -3,7 +3,7 @@
  
         <% if logged_in? %>
 
-         <!-- Check if current_user has alrady liked this question -->
+         <!-- Check if current_user has already liked this question -->
             <% user_has_liked = @question.likes.find { |like| like.user_id == current_user.id} %>
             
             <% if user_has_liked %>

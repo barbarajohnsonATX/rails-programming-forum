@@ -7,11 +7,11 @@
     <div class="activities col-md-3">
         <div class="card">
             <div class="card-header text-center">
-            <h4>My activities by category </h4>
+            <h4>My questions</h4>
             </div>
             <div class="card-body">
-                <% if @categories %>
-                    <%= render @categories %>
+                <% if @my_questions %>
+                <%= render partial: 'questions/question', collection: @my_questions %>
                 <% else %>
                     <p>None </p>
                 <% end %>

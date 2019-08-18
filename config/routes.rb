@@ -26,7 +26,7 @@ resources :tags, only: [:show]
 #resources :questions
 resources :users
 
-resources :categories do
+resources :categories, only: [:index, :show] do
      resources :questions
 end
 

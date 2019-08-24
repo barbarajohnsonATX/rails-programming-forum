@@ -19,6 +19,7 @@ class User < ApplicationRecord
 end 
 
  
+   
 
 
     def heart!(question)

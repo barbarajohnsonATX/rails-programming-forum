@@ -6,6 +6,7 @@ class Admin::ApplicationController < ApplicationController
     @answers = Answer.all
     @categories = Category.all 
     @users = User.all 
+	@userWithMostLikes = Like.top_user.first
 
   end
 

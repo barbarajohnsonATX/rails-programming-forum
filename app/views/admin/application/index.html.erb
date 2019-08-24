@@ -7,4 +7,7 @@
     Number of <%= link_to "Users", admin_users_path %>: <%= @users.count %> <br>
     Number of <%= link_to "Questions and Answers", admin_questions_path %>: <%= @questions.count %> questions and <%= @answers.count %> answers <br>
 
+    User with most likes: <%= link_to @userWithMostLikes.username, admin_user_path(@userWithMostLikes) %> <br>
+
+
  </div>

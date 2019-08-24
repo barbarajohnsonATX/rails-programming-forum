@@ -36,6 +36,8 @@ class UsersController < ApplicationController
         @my_likes = Question.liked_by(current_user)
      end 
 
+    
+
     private 
      
 
